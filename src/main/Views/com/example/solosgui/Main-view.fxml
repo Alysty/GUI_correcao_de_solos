@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+
+<TabPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <tabs>
+      <Tab text="Calcio Magnesio">
+         <content>
+            <VBox alignment="CENTER" maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" spacing="20.0">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Fosforo">
+         <content>
+            <VBox alignment="CENTER" maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" spacing="20.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Potassio">
+         <content>
+            <VBox alignment="CENTER" maxHeight="675.0" maxWidth="1200.0" minHeight="675.0" minWidth="1200.0" spacing="20.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

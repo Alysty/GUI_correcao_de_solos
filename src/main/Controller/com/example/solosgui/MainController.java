@@ -68,6 +68,7 @@ public class MainController {
     public Text primeiroIngredienteAdicionalCalcioMag;
     public Text secondIngredienteAdicionalCalcioMag;
     public Text quantidadeAplicarCalcioMag;
+    public Button buttonCalcularCalcioMag;
     
     //postasio controller 
     public TextField fonteCorretivo;
@@ -81,6 +82,70 @@ public class MainController {
     public Text quantidadeAplicarPotassio;
     public Text vPorcentagemAtual;
     public Text vPorcentagemAosCorrecoes;
-    
-    
+    public Button buttonCalcularPotassio;
+
+    public void actionTextura(ActionEvent actionEvent) {
+        texturaEscolhida();
+    }
+
+    private void texturaEscolhida(){
+        try{
+            if(Integer.parseInt(texturaSolo.getCharacters().toString())==1){
+                fosforoIdeal.setText("9.0");
+                potassioIdeal.setText("0.35");
+                calcioIdeal.setText("6.0");
+                magnesioIdeal.setText("1.5");
+                enxofreIdeal.setText("9.0");
+                aluminioIdeal.setText("0.0");
+                hPlusAlIdeal.setText("0.0");
+            }else{
+                Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+                warningAlert.setHeaderText("Unavailable");
+                warningAlert.setContentText("The input used is unavailable");
+                warningAlert.showAndWait();
+            }
+        }catch(Exception e){
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Invalid input");
+            errorAlert.setContentText("The input used is invalid");
+            errorAlert.showAndWait();
+        }
+    }
+
+    public void buttonCalcularFosforoAction(ActionEvent actionEvent) {
+        quantidadeAplicarFosforo.setText(calculaQuantidadeAplicar(teorFosforoAtingir, fonteFosforo));
+        fosforoAposCorrecoes.setText(teorFosforoAtingir.getText());
+        custoTotalFosforo.setText(String.valueOf(Double.parseDouble(quantidadeAplicarFosforo.getText()) * Double.parseDouble(fonteFosforo.getText())));
+    }
+    public void buttonCalcularCalcioMagAction(ActionEvent actionEvent) {
+        quantidadeAplicarCalcioMag.setText(calculaQuantidadeAplicar(calcioCTCDesejada,teorCaOCorretivo ));
+        calcioAposCorrecoes.setText(calcioCTCDesejada.getText());
+        magnesioAposCorrecoes.setText(calcioCTCDesejada.getText());
+        custoTotalCalcioMag.setText(String.valueOf(Double.parseDouble(quantidadeAplicarCalcioMag.getText()) * Double.parseDouble(fonteCorretivo.getText())));
+    }
+    public void buttonCalcularPotassioAction(ActionEvent actionEvent) {
+        quantidadeAplicarPotassio.setText(calculaQuantidadeAplicar(potassioCTCDesejada, fontePotassio));
+        potassioAposCorrecoes.setText(potassioCTCDesejada.getText());
+        custoTotalPotassio.setText(String.valueOf(Double.parseDouble(quantidadeAplicarPotassio.getText()) * Double.parseDouble(fontePotassio.getText())));
+    }
+
+    public String calculaQuantidadeAplicar(
+            TextField necessidade,
+            TextField teor) {
+        try{
+            double necessidade_double = Double.parseDouble(necessidade.getCharacters().toString());
+            double teor_double = Double.parseDouble(teor.getCharacters().toString());
+            if (necessidade_double <= 0) {
+                throw new IllegalArgumentException();
+            }
+            return String.valueOf( necessidade_double / teor_double);
+        }catch (Exception e){
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Invalid input");
+            errorAlert.setContentText("The input used is invalid");
+            errorAlert.showAndWait();
+            return "error";
+        }
+
+    }
 }

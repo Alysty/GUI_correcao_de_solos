@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.solosgui.FosforoController">
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.solosgui.MainController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,7 +34,7 @@
             </rowConstraints>
             <children>
                 <Label text="Teor de Fósforo a atingir:" GridPane.halignment="CENTER" />
-                <TextField fx:id="teorFosforo" GridPane.rowIndex="1">
+                <TextField fx:id="teorFosforoAtingir" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin></TextField>
@@ -87,7 +88,7 @@
             </rowConstraints>
             <children>
                 <Label text="Custo:" GridPane.halignment="CENTER" />
-                <Text fx:id="custoTotal" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="custoTotalFosforo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -102,7 +103,7 @@
             </rowConstraints>
             <children>
                 <Label text="Quantidade a aplicar:" GridPane.halignment="CENTER" />
-                <Text fx:id="quantidadeAplicar" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="quantidadeAplicarFosforo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1">
@@ -117,9 +118,25 @@
             </rowConstraints>
             <children>
                 <Label text="Essa correção de FÓSFORO, fornecerá também (kg/ha):" GridPane.halignment="CENTER" />
-                <Text fx:id="primeiroNutrienteAdicional" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                <Text fx:id="segundoNutrienteAdicional" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="primeiroNutrienteAdicionalFosforo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="segundoNutrienteAdicionalFosforo" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
+      <GridPane GridPane.rowIndex="3">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="buttonCalcularFosforo" mnemonicParsing="false" onAction="#buttonCalcularFosforoAction" text="Calcular" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="15.0" right="15.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
     </children>
 </GridPane>

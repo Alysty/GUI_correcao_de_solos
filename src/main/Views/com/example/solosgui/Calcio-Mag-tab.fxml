@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.solosgui.CalcioMagController">
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.solosgui.MainController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -71,7 +71,7 @@
             </rowConstraints>
             <children>
                 <Label text="Custo:" GridPane.halignment="CENTER" />
-                <Text fx:id="custoTotal" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="custoTotalCalcioMag" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -101,8 +101,8 @@
             </rowConstraints>
             <children>
                 <Label text="Essa correção de Potássio fornecerá também:" GridPane.halignment="CENTER" />
-                <Text fx:id="primeiroIngredienteAdicional" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                <Text fx:id="secondIngredienteAdicional" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="primeiroIngredienteAdicionalCalcioMag" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="secondIngredienteAdicionalCalcioMag" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -117,7 +117,7 @@
             </rowConstraints>
             <children>
                 <Label text="Quantidade a aplicar:" GridPane.halignment="CENTER" />
-                <Text fx:id="quantidadeAplicar" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="quantidadeAplicarCalcioMag" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </children>

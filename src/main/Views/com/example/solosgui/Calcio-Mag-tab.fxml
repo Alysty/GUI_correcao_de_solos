@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
-
 
 <GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.solosgui.CalcioMagController">
     <columnConstraints>
@@ -32,7 +33,7 @@
             </rowConstraints>
             <children>
                 <Label text="Participação do Potássio na CTC, desejada: " GridPane.halignment="CENTER" />
-                <TextField GridPane.rowIndex="1">
+                <TextField fx:id="potassioCTCDesejada" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin>
@@ -51,7 +52,7 @@
             </rowConstraints>
             <children>
                 <Label text="Fonte de Potássio a usar:" GridPane.halignment="CENTER" />
-                <TextField GridPane.rowIndex="1">
+                <TextField fx:id="fontePotassio" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                     </GridPane.margin>
@@ -70,7 +71,7 @@
             </rowConstraints>
             <children>
                 <Label text="Custo:" GridPane.halignment="CENTER" />
-                <Text fx:id="cost1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="custoTotal" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -85,7 +86,7 @@
             </rowConstraints>
             <children>
                 <Label text="Participação atual do POTÁSSIO na CTC do solo:" GridPane.halignment="CENTER" />
-                <Text fx:id="quantityToApply1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="participacaoCTCAtual" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1">
@@ -100,8 +101,8 @@
             </rowConstraints>
             <children>
                 <Label text="Essa correção de Potássio fornecerá também:" GridPane.halignment="CENTER" />
-                <Text fx:id="firstAddicionalNutrient1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                <Text fx:id="secondAddicionalNutrient1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="primeiroIngredienteAdicional" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="secondIngredienteAdicional" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -116,7 +117,7 @@
             </rowConstraints>
             <children>
                 <Label text="Quantidade a aplicar:" GridPane.halignment="CENTER" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Text fx:id="quantidadeAplicar" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </children>

@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class MainController {
@@ -77,8 +76,8 @@ public class MainController {
     public TextField teorCaOCorretivo;
     public Text custoTotalPotassio;
     public Text potassioCTCAtual;
-    public Text primeiroNutrienteAdicionalPotasio;
-    public Text segundoNutrienteAdicionalPotasio;
+    public Text primeiroNutrienteAdicionalPotassio;
+    public Text segundoNutrienteAdicionalPotassio;
     public Text quantidadeAplicarPotassio;
     public Text vPorcentagemAtual;
     public Text vPorcentagemAosCorrecoes;

@@ -7,10 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SoilCorrectionApplication extends Application {
+
+public class SoilCorrection extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SoilCorrectionApplication.class.getResource("Main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SoilCorrectionLauncher.class.getResource("Main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Soil Correction");
         stage.setScene(scene);

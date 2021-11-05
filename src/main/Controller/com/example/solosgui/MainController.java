@@ -1,5 +1,6 @@
 package com.example.solosgui;
 
+import com.example.solosgui.util.exceptions.InvalidEntryException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -57,94 +58,91 @@ public class MainController {
     public Text primeiroNutrienteAdicionalFosforo;
     public Text segundoNutrienteAdicionalFosforo;
     public Button buttonCalcularFosforo;
-    
-    //calciomag controller
 
+    //postasio controller
     public TextField potassioCTCDesejada;
     public TextField fontePotassio;
-    public Text custoTotalCalcioMag;
-    public Text participacaoCTCAtual;
-    public Text primeiroIngredienteAdicionalCalcioMag;
-    public Text secondIngredienteAdicionalCalcioMag;
-    public Text quantidadeAplicarCalcioMag;
-    public Button buttonCalcularCalcioMag;
-    
-    //postasio controller 
-    public TextField fonteCorretivo;
-    public TextField calcioCTCDesejada;
-    public TextField pRNT;
-    public TextField teorCaOCorretivo;
     public Text custoTotalPotassio;
     public Text potassioCTCAtual;
     public Text primeiroNutrienteAdicionalPotassio;
     public Text segundoNutrienteAdicionalPotassio;
     public Text quantidadeAplicarPotassio;
-    public Text vPorcentagemAtual;
-    public Text vPorcentagemAosCorrecoes;
     public Button buttonCalcularPotassio;
 
-    public void actionTextura(ActionEvent actionEvent) {
-        texturaEscolhida();
-    }
+    //calciomag controller
+    public Text custoTotalCalcioMag;
+    public Text calcioCTCAtual;
+    public Text quantidadeAplicarCalcioMag;
+    public Button buttonCalcularCalcioMag;
+    public TextField fonteCorretivo;
+    public TextField calcioCTCDesejada;
+    public TextField pRNT;
+    public TextField teorCaOCorretivo;
+    public Text vPorcentagemAtual;
+    public Text vPorcentagemAposCorrecoes;
+    public Text primeiroNutrienteAdicionalCalcioMag;
+    public Text segundoNutrienteAdicionalCalcioMag;
+    public TextField magnesioCTCDesejada;
+    public Text magnesioCTCAtual;
 
-    private void texturaEscolhida(){
+    public void actionTextura(ActionEvent actionEvent) {
         try{
-            if(Integer.parseInt(texturaSolo.getCharacters().toString())==1){
-                fosforoIdeal.setText("9.0");
-                potassioIdeal.setText("0.35");
-                calcioIdeal.setText("6.0");
-                magnesioIdeal.setText("1.5");
-                enxofreIdeal.setText("9.0");
-                aluminioIdeal.setText("0.0");
-                hPlusAlIdeal.setText("0.0");
-            }else{
-                Alert warningAlert = new Alert(Alert.AlertType.WARNING);
-                warningAlert.setHeaderText("Unavailable");
-                warningAlert.setContentText("The input used is unavailable");
-                warningAlert.showAndWait();
-            }
-        }catch(Exception e){
+            texturaEscolhida();
+        }catch (NumberFormatException e){
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Invalid input");
             errorAlert.setContentText("The input used is invalid");
             errorAlert.showAndWait();
+        }catch (InvalidEntryException e){
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setHeaderText("Unavailable");
+            warningAlert.setContentText("The input used is unavailable");
+            warningAlert.showAndWait();
+        }
+    }
+
+    public void texturaEscolhida() throws NumberFormatException, InvalidEntryException {
+        if(Integer.parseInt(texturaSolo.getCharacters().toString())==1){
+            fosforoIdeal.setText("9.0");
+            potassioIdeal.setText("0.35");
+            calcioIdeal.setText("6.0");
+            magnesioIdeal.setText("1.5");
+            enxofreIdeal.setText("9.0");
+            aluminioIdeal.setText("0.0");
+            hPlusAlIdeal.setText("0.0");
+            potassioCTCAtual.setText("1.2");
+            calcioCTCAtual.setText("44.7");
+            magnesioCTCAtual.setText("12.6");
+            vPorcentagemAtual.setText("58.49");
+        }else{
+            throw new InvalidEntryException();
         }
     }
 
     public void buttonCalcularFosforoAction(ActionEvent actionEvent) {
-        quantidadeAplicarFosforo.setText(calculaQuantidadeAplicar(teorFosforoAtingir, fonteFosforo));
-        fosforoAposCorrecoes.setText(teorFosforoAtingir.getText());
+        quantidadeAplicarFosforo.setText(String.valueOf( Double.parseDouble(teorFosforoAtingir.getCharacters().toString()) /  Double.parseDouble(fonteFosforo.getCharacters().toString())));
+        fosforoAposCorrecoes.setText(String.valueOf(Double.parseDouble(teorFosforoAtingir.getText())));
         custoTotalFosforo.setText(String.valueOf(Double.parseDouble(quantidadeAplicarFosforo.getText()) * Double.parseDouble(fonteFosforo.getText())));
+        primeiroNutrienteAdicionalFosforo.setText("Nutriente1: 2.3");
+        segundoNutrienteAdicionalFosforo.setText("Nutriente2: 4.0");
     }
-    public void buttonCalcularCalcioMagAction(ActionEvent actionEvent) {
-        quantidadeAplicarCalcioMag.setText(calculaQuantidadeAplicar(calcioCTCDesejada,teorCaOCorretivo ));
-        calcioAposCorrecoes.setText(calcioCTCDesejada.getText());
-        magnesioAposCorrecoes.setText(calcioCTCDesejada.getText());
-        custoTotalCalcioMag.setText(String.valueOf(Double.parseDouble(quantidadeAplicarCalcioMag.getText()) * Double.parseDouble(fonteCorretivo.getText())));
-    }
+
     public void buttonCalcularPotassioAction(ActionEvent actionEvent) {
-        quantidadeAplicarPotassio.setText(calculaQuantidadeAplicar(potassioCTCDesejada, fontePotassio));
-        potassioAposCorrecoes.setText(potassioCTCDesejada.getText());
+        quantidadeAplicarPotassio.setText(String.valueOf( Double.parseDouble(potassioCTCDesejada.getCharacters().toString()) /  Double.parseDouble(fontePotassio.getCharacters().toString())));
+        potassioAposCorrecoes.setText(String.valueOf(Double.parseDouble(potassioCTCDesejada.getText())));
         custoTotalPotassio.setText(String.valueOf(Double.parseDouble(quantidadeAplicarPotassio.getText()) * Double.parseDouble(fontePotassio.getText())));
+        primeiroNutrienteAdicionalPotassio.setText("Nutriente1: 9.3");
+        segundoNutrienteAdicionalPotassio.setText("Nutriente2: 5.2");
     }
 
-    public String calculaQuantidadeAplicar(
-            TextField necessidade,
-            TextField teor) {
-        try{
-            double necessidade_double = Double.parseDouble(necessidade.getCharacters().toString());
-            double teor_double = Double.parseDouble(teor.getCharacters().toString());
-            if (necessidade_double <= 0) {
-                throw new IllegalArgumentException();
-            }
-            return String.valueOf( necessidade_double / teor_double);
-        }catch (Exception e){
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Invalid input");
-            errorAlert.setContentText("The input used is invalid");
-            errorAlert.showAndWait();
-            return "error";
-        }
-
+    public void buttonCalcularCalcioMagAction(ActionEvent actionEvent) {
+        quantidadeAplicarCalcioMag.setText(String.valueOf( Double.parseDouble(calcioCTCDesejada.getCharacters().toString()) /  Double.parseDouble(teorCaOCorretivo.getCharacters().toString())));
+        calcioAposCorrecoes.setText(String.valueOf(Double.parseDouble(calcioCTCDesejada.getText())));
+        magnesioAposCorrecoes.setText(String.valueOf(Double.parseDouble(magnesioCTCDesejada.getText())));
+        custoTotalCalcioMag.setText(String.valueOf(Double.parseDouble(quantidadeAplicarCalcioMag.getText()) * Double.parseDouble(fonteCorretivo.getText())));
+        vPorcentagemAposCorrecoes.setText(String.valueOf(Double.parseDouble(pRNT.getText())));
+        primeiroNutrienteAdicionalCalcioMag.setText("Nutriente1: 6.6");
+        segundoNutrienteAdicionalCalcioMag.setText("Nutriente2: 5.5");
     }
+
 }

@@ -89,6 +89,17 @@ public class MainController {
         try{
             texturaEscolhida();
         }catch (NumberFormatException e){
+            fosforoIdeal.setText("ERROR");
+            potassioIdeal.setText("ERROR");
+            calcioIdeal.setText("ERROR");
+            magnesioIdeal.setText("ERROR");
+            enxofreIdeal.setText("ERROR");
+            aluminioIdeal.setText("ERROR");
+            hPlusAlIdeal.setText("ERROR");
+            potassioCTCAtual.setText("ERROR");
+            calcioCTCAtual.setText("ERROR");
+            magnesioCTCAtual.setText("ERROR");
+            vPorcentagemAtual.setText("ERROR");
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setHeaderText("Invalid input");
             errorAlert.setContentText("The input used is invalid");
@@ -120,29 +131,55 @@ public class MainController {
     }
 
     public void buttonCalcularFosforoAction(ActionEvent actionEvent) {
-        quantidadeAplicarFosforo.setText(String.valueOf( Double.parseDouble(teorFosforoAtingir.getCharacters().toString()) /  Double.parseDouble(fonteFosforo.getCharacters().toString())));
-        fosforoAposCorrecoes.setText(String.valueOf(Double.parseDouble(teorFosforoAtingir.getText())));
-        custoTotalFosforo.setText(String.valueOf(Double.parseDouble(quantidadeAplicarFosforo.getText()) * Double.parseDouble(fonteFosforo.getText())));
-        primeiroNutrienteAdicionalFosforo.setText("Nutriente1: 2.3");
-        segundoNutrienteAdicionalFosforo.setText("Nutriente2: 4.0");
+        try{
+            quantidadeAplicarFosforo.setText(String.valueOf( Double.parseDouble(teorFosforoAtingir.getCharacters().toString()) /  Double.parseDouble(fonteFosforo.getCharacters().toString())));
+            fosforoAposCorrecoes.setText(String.valueOf(Double.parseDouble(teorFosforoAtingir.getText())));
+            custoTotalFosforo.setText(String.valueOf(Double.parseDouble(quantidadeAplicarFosforo.getText()) * Double.parseDouble(fonteFosforo.getText())));
+            primeiroNutrienteAdicionalFosforo.setText("Nutriente1: 2.3");
+            segundoNutrienteAdicionalFosforo.setText("Nutriente2: 4.0");
+        }catch (NumberFormatException e){
+            quantidadeAplicarFosforo.setText("ERROR");
+            fosforoAposCorrecoes.setText("ERROR");
+            custoTotalFosforo.setText("ERROR");
+            primeiroNutrienteAdicionalFosforo.setText("ERROR");
+            segundoNutrienteAdicionalFosforo.setText("ERROR");
+        }
     }
 
     public void buttonCalcularPotassioAction(ActionEvent actionEvent) {
-        quantidadeAplicarPotassio.setText(String.valueOf( Double.parseDouble(potassioCTCDesejada.getCharacters().toString()) /  Double.parseDouble(fontePotassio.getCharacters().toString())));
-        potassioAposCorrecoes.setText(String.valueOf(Double.parseDouble(potassioCTCDesejada.getText())));
-        custoTotalPotassio.setText(String.valueOf(Double.parseDouble(quantidadeAplicarPotassio.getText()) * Double.parseDouble(fontePotassio.getText())));
-        primeiroNutrienteAdicionalPotassio.setText("Nutriente1: 9.3");
-        segundoNutrienteAdicionalPotassio.setText("Nutriente2: 5.2");
+        try{
+            quantidadeAplicarPotassio.setText(String.valueOf( Double.parseDouble(potassioCTCDesejada.getCharacters().toString()) /  Double.parseDouble(fontePotassio.getCharacters().toString())));
+            potassioAposCorrecoes.setText(String.valueOf(Double.parseDouble(potassioCTCDesejada.getText())));
+            custoTotalPotassio.setText(String.valueOf(Double.parseDouble(quantidadeAplicarPotassio.getText()) * Double.parseDouble(fontePotassio.getText())));
+            primeiroNutrienteAdicionalPotassio.setText("Nutriente1: 9.3");
+            segundoNutrienteAdicionalPotassio.setText("Nutriente2: 5.2");
+        }catch (NumberFormatException e){
+            quantidadeAplicarPotassio.setText("ERROR");
+            potassioAposCorrecoes.setText("ERROR");
+            custoTotalPotassio.setText("ERROR");
+            primeiroNutrienteAdicionalPotassio.setText("ERROR");
+            segundoNutrienteAdicionalPotassio.setText("ERROR");
+        }
+
     }
 
     public void buttonCalcularCalcioMagAction(ActionEvent actionEvent) {
-        quantidadeAplicarCalcioMag.setText(String.valueOf( Double.parseDouble(calcioCTCDesejada.getCharacters().toString()) /  Double.parseDouble(teorCaOCorretivo.getCharacters().toString())));
-        calcioAposCorrecoes.setText(String.valueOf(Double.parseDouble(calcioCTCDesejada.getText())));
-        magnesioAposCorrecoes.setText(String.valueOf(Double.parseDouble(magnesioCTCDesejada.getText())));
-        custoTotalCalcioMag.setText(String.valueOf(Double.parseDouble(quantidadeAplicarCalcioMag.getText()) * Double.parseDouble(fonteCorretivo.getText())));
-        vPorcentagemAposCorrecoes.setText(String.valueOf(Double.parseDouble(pRNT.getText())));
-        primeiroNutrienteAdicionalCalcioMag.setText("Nutriente1: 6.6");
-        segundoNutrienteAdicionalCalcioMag.setText("Nutriente2: 5.5");
+        try {
+            quantidadeAplicarCalcioMag.setText(String.valueOf( Double.parseDouble(calcioCTCDesejada.getCharacters().toString()) /  Double.parseDouble(teorCaOCorretivo.getCharacters().toString())));
+            calcioAposCorrecoes.setText(String.valueOf(Double.parseDouble(calcioCTCDesejada.getText())));
+            magnesioAposCorrecoes.setText(String.valueOf(Double.parseDouble(magnesioCTCDesejada.getText())));
+            custoTotalCalcioMag.setText(String.valueOf(Double.parseDouble(quantidadeAplicarCalcioMag.getText()) * Double.parseDouble(fonteCorretivo.getText())));
+            vPorcentagemAposCorrecoes.setText(String.valueOf(Double.parseDouble(pRNT.getText())));
+            primeiroNutrienteAdicionalCalcioMag.setText("Nutriente1: 6.6");
+            segundoNutrienteAdicionalCalcioMag.setText("Nutriente2: 5.5");
+        }catch (NumberFormatException e){
+            quantidadeAplicarCalcioMag.setText("ERROR");
+            calcioAposCorrecoes.setText("ERROR");
+            magnesioAposCorrecoes.setText("ERROR");
+            custoTotalCalcioMag.setText("ERROR");
+            vPorcentagemAposCorrecoes.setText("ERROR");
+            primeiroNutrienteAdicionalCalcioMag.setText("ERROR");
+            segundoNutrienteAdicionalCalcioMag.setText("ERROR");
+        }
     }
-
 }

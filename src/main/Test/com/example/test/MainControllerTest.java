@@ -40,6 +40,23 @@ class MainControllerTest  extends ApplicationTest {
     }
 
     @Test
+    void testMethodActionTexturaBecauseOfWrongInput() {
+        clickOn("#texturaSolo");
+        write("Wrong input").push(KeyCode.ENTER);
+        Assertions.assertEquals("ERROR", lookup("#fosforoIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#potassioIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#calcioIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#magnesioIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#enxofreIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#aluminioIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#hPlusAlIdeal").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#potassioCTCAtual").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#calcioCTCAtual").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#magnesioCTCAtual").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#vPorcentagemAtual").queryText().getText());
+
+    }
+    @Test
     void testMethodButtonCalcularFosforoAction() {
         clickOn("#texturaSolo");
         write("1").push(KeyCode.ENTER);
@@ -54,6 +71,20 @@ class MainControllerTest  extends ApplicationTest {
         Assertions.assertEquals("Nutriente2: 4.0", lookup("#segundoNutrienteAdicionalFosforo").queryText().getText());
     }
 
+    @Test
+    void testMethodButtonCalcularFosforoActionFailedBecauseOfWrongTypeOfInput() {
+        clickOn("#texturaSolo");
+        write("1").push(KeyCode.ENTER);
+        lookup("#teorFosforoAtingir").queryTextInputControl().setText("Wrong Input");
+        lookup("#fonteFosforo").queryTextInputControl().setText("Wrong Input");
+        lookup("#eficienciaFosforo").queryTextInputControl().setText("Wrong Input");
+        lookup("#buttonCalcularFosforo").queryButton().fire();
+        Assertions.assertEquals("ERROR", lookup("#quantidadeAplicarFosforo").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#fosforoAposCorrecoes").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#custoTotalFosforo").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#primeiroNutrienteAdicionalFosforo").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#segundoNutrienteAdicionalFosforo").queryText().getText());
+    }
 
     @Test
     void testMethodButtonCalcularPotassioAction() { clickOn("#texturaSolo");
@@ -67,6 +98,19 @@ class MainControllerTest  extends ApplicationTest {
         Assertions.assertEquals("16.0", lookup("#custoTotalPotassio").queryText().getText());
         Assertions.assertEquals("Nutriente1: 9.3", lookup("#primeiroNutrienteAdicionalPotassio").queryText().getText());
         Assertions.assertEquals("Nutriente2: 5.2", lookup("#segundoNutrienteAdicionalPotassio").queryText().getText());
+    }
+    @Test
+    void testMethodButtonCalcularPotassioActionFailedBecauseOfWrongTypeOfInput() { clickOn("#texturaSolo");
+        clickOn("#texturaSolo");
+        write("1").push(KeyCode.ENTER);
+        lookup("#potassioCTCDesejada").queryTextInputControl().setText("Wrong Input");
+        lookup("#fontePotassio").queryTextInputControl().setText("Wrong Input");
+        lookup("#buttonCalcularPotassio").queryButton().fire();
+        Assertions.assertEquals("ERROR", lookup("#quantidadeAplicarPotassio").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#potassioAposCorrecoes").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#custoTotalPotassio").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#primeiroNutrienteAdicionalPotassio").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#segundoNutrienteAdicionalPotassio").queryText().getText());
     }
 
     @Test
@@ -87,5 +131,25 @@ class MainControllerTest  extends ApplicationTest {
         Assertions.assertEquals("9.0", lookup("#vPorcentagemAposCorrecoes").queryText().getText());
         Assertions.assertEquals("Nutriente1: 6.6", lookup("#primeiroNutrienteAdicionalCalcioMag").queryText().getText());
         Assertions.assertEquals("Nutriente2: 5.5", lookup("#segundoNutrienteAdicionalCalcioMag").queryText().getText());
+    }
+
+    @Test
+    void testMethodButtonCalcularCalcioMagActionFailedBecauseOfWrongTypeOfInput() {
+        clickOn("#texturaSolo");
+        write("1").push(KeyCode.ENTER);
+        lookup("#calcioCTCDesejada").queryTextInputControl().setText("Wrong Input");
+        lookup("#magnesioCTCDesejada").queryTextInputControl().setText("Wrong Input");
+        lookup("#fonteCorretivo").queryTextInputControl().setText("Wrong Input");
+        lookup("#pRNT").queryTextInputControl().setText("Wrong Input");
+        lookup("#teorCaOCorretivo").queryTextInputControl().setText("Wrong Input");
+        lookup("#buttonCalcularCalcioMag").queryButton().fire();
+
+        Assertions.assertEquals("ERROR", lookup("#quantidadeAplicarCalcioMag").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#calcioAposCorrecoes").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#magnesioAposCorrecoes").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#custoTotalCalcioMag").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#vPorcentagemAposCorrecoes").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#primeiroNutrienteAdicionalCalcioMag").queryText().getText());
+        Assertions.assertEquals("ERROR", lookup("#segundoNutrienteAdicionalCalcioMag").queryText().getText());
     }
 }
